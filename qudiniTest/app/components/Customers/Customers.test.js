@@ -1,21 +1,24 @@
-import React from 'react';
-import Customers from './Customers.js';
-
-import renderer from 'react-test-renderer';
-import Customer from '../../classes/customerClass.js'
+import React from "react";
+import Customers from "./Customers.js";
+import renderer from "react-test-renderer";
+import Customer from "../../classes/customerClass.js";
 
 const defaultProps = {
-  searchAction: () => {},
+  searchAction: () => {
+  },
   searchReducerValue: null,
-  getCustomersQueueAction: () => {},
+  getCustomersQueueAction: () => {
+  },
   customersReducerValue: {
     queueRefreshTimeout: {},
     queue: [],
     queueLength: 0,
     minutesToNextFree: 0,
   },
-  setQueueTimeoutRefreshAction: () => {},
-  clearQueueTimeoutRefreshAction: () => {},
+  setQueueTimeoutRefreshAction: () => {
+  },
+  clearQueueTimeoutRefreshAction: () => {
+  },
   loadingReducer: false
 };
 
@@ -42,6 +45,6 @@ it('renders queue without crashing', () => {
     	queueLength: 1,
     	minutesToNextFree: 20,
     }
-  } />).toJSON();
+  }/>).toJSON();
   expect(rendered).toBeTruthy();
 });

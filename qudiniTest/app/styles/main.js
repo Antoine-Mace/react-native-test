@@ -1,5 +1,5 @@
-import * as value from './var/colors.js'
-import { platform } from './var/device.js'
+import * as value from "./var/colors.js";
+import {platform} from "./var/device.js";
 
 const styles = {
   view: {

@@ -1,10 +1,9 @@
 // @flow
-
-import React, { PureComponent } from 'react';
-import { ListItem, Body, Left, Right, Text, Thumbnail } from 'native-base';
-import CustomerClass from '../../../classes/customerClass.js'
-import { avatarPlaceholder } from '../../../assets/index.js'
-import styles from '../../../styles/main.js'
+import React, {PureComponent} from "react";
+import {ListItem, Body, Left, Right, Text, Thumbnail} from "native-base";
+import CustomerClass from "../../../classes/customerClass.js";
+import {avatarPlaceholder} from "../../../assets/index.js";
+import styles from "../../../styles/main.js";
 
 type Props = {
   search: string,
@@ -13,8 +12,8 @@ type Props = {
 
 export default class CustomerRow extends PureComponent<Props> {
 
- filterSearch = (name: string): boolean => {
-    const sanetizeString = (str) => str.toString().replace(/\s/g,'').toLowerCase()
+  filterSearch = (name: string): boolean => {
+    const sanetizeString = (str) => str.toString().replace(/\s/g, '').toLowerCase()
     if (!this.props.search)
       return true;
     if (name && sanetizeString(name).search(sanetizeString(this.props.search)) !== -1)
@@ -23,7 +22,7 @@ export default class CustomerRow extends PureComponent<Props> {
   }
 
   render() {
-    const { get } = this.props.data;
+    const {get} = this.props.data;
     const avatarUri = get('avatarUri');
 
     if (!this.filterSearch(get('name'))) {
@@ -32,11 +31,11 @@ export default class CustomerRow extends PureComponent<Props> {
     return (
       <ListItem avatar style={styles.ListItem}>
         <Left>
-          <Thumbnail source={avatarUri ? { uri: avatarUri  } : avatarPlaceholder} />
+          <Thumbnail source={avatarUri ? { uri: avatarUri  } : avatarPlaceholder}/>
         </Left>
         <Body>
-          <Text>{get('name') || ' '}</Text>
-          <Text note>{get('emailAddress') || ' '}</Text>
+        <Text>{get('name') || ' '}</Text>
+        <Text note>{get('emailAddress') || ' '}</Text>
         </Body>
         <Right>
           <Text note>{get('currentPosition') || ' '}</Text>

@@ -1,9 +1,6 @@
-import React from 'react';
-import customersReducer from './customersReducer.js';
-import {
-  GET_CUSTOMERS_QUEUE_SUCCESS,
-  GET_CUSTOMERS_QUEUE_ERROR
-} from '../actionTypes/index.js'
+import React from "react";
+import customersReducer from "./customersReducer.js";
+import {GET_CUSTOMERS_QUEUE_ERROR} from "../actionTypes/index.js";
 
 const defaultData = {
   queueRefreshTimeout: 'test',
@@ -14,7 +11,7 @@ const defaultData = {
 
 it(`test ${GET_CUSTOMERS_QUEUE_ERROR}`, () => {
   expect(
-    customersReducer(defaultData, { type: GET_CUSTOMERS_QUEUE_ERROR })
+    customersReducer(defaultData, {type: GET_CUSTOMERS_QUEUE_ERROR})
   ).toEqual({
     queueRefreshTimeout: 'test',
     queue: [],

@@ -1,14 +1,11 @@
 // @flow
-
-import React, { PureComponent } from 'react';
-import { FlatList } from 'react-native';
-import TimerMixin from 'react-timer-mixin'
-import reactMixin from 'react-mixin'
-
-import { Container, Header, Footer, Body, Left, Right, Content, Title, Input, Text, List, Spinner } from 'native-base';
-import CustomerRow from './CustomerRow/CustomerRow.js';
-
-import {platform} from '../../styles/var/device.js'
+import React, {PureComponent} from "react";
+import {FlatList} from "react-native";
+import TimerMixin from "react-timer-mixin";
+import reactMixin from "react-mixin";
+import {Container, Header, Footer, Body, Left, Right, Content, Title, Input, Text, List, Spinner} from "native-base";
+import CustomerRow from "./CustomerRow/CustomerRow.js";
+import {platform} from "../../styles/var/device.js";
 
 type Props = {
   searchAction: (string) => {},
@@ -35,8 +32,7 @@ class Customers extends PureComponent<Props> {
   }
 
   componentWillUnmount() {
-    if (this.props.customersReducerValue.queueRefreshTimeout)
-    {
+    if (this.props.customersReducerValue.queueRefreshTimeout) {
       this.clearTimeout(this.props.customersReducerValue.queueRefreshTimeout);
       this.props.clearQueueTimeoutRefreshAction();
     }
@@ -45,9 +41,9 @@ class Customers extends PureComponent<Props> {
   setRefreshTimeout = () => {
     if (!this.props.customersReducerValue.queueRefreshTimeout) {
       const newTimeout = this.setTimeout(() => {
-          this.props.clearQueueTimeoutRefreshAction();
-          this.props.getCustomersQueueAction();
-          this.setRefreshTimeout();
+        this.props.clearQueueTimeoutRefreshAction();
+        this.props.getCustomersQueueAction();
+        this.setRefreshTimeout();
       }, 30000)
       this.props.setQueueTimeoutRefreshAction(newTimeout)
     }
@@ -55,26 +51,26 @@ class Customers extends PureComponent<Props> {
 
   getKey = (item: {get: (string) => {}}, index: number) => item.get('currentPosition').toString()
 
-  _renderCustomerItem = ({ item, index }) => {
+  _renderCustomerItem = ({item, index}) => {
     return (
-      <CustomerRow 
+      <CustomerRow
         key={this.getKey(item, index)}
-        search={this.props.searchReducerValue} 
+        search={this.props.searchReducerValue}
         data={item}
-        />
+      />
     );
   };
 
   render() {
-    const { searchAction, searchReducerValue, customersReducerValue: { queue, queueLength, minutesToNextFree }, loadingReducer } = this.props;
+    const {searchAction, searchReducerValue, customersReducerValue: {queue, queueLength, minutesToNextFree}, loadingReducer} = this.props;
     return (
       <Container>
         <Header>
           {platform === 'ios' &&
-            <Left></Left>
+          <Left></Left>
           }
           <Body>
-            <Title>Customers</Title>
+          <Title>Customers</Title>
           </Body>
           <Right>
             {loadingReducer
@@ -99,9 +95,9 @@ class Customers extends PureComponent<Props> {
           </List>
         </Content>
         {(minutesToNextFree != -1) &&
-          <Footer>
-            <Text note>Next free : {minutesToNextFree} min</Text>
-          </Footer>
+        <Footer>
+          <Text note>Next free : {minutesToNextFree} min</Text>
+        </Footer>
         }
       </Container>
     );
