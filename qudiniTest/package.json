@@ -1,0 +1,42 @@
+{
+  "name": "qudiniTest",
+  "dir": "qudiniTest",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "version": "echo $npm_package_version",
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest",
+    "flow": "flow",
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+  },
+  "dependencies": {
+    "flow-bin": "^0.67.0",
+    "jest-react-native": "^18.0.0",
+    "md5": "^2.2.1",
+    "native-base": "^2.4.5",
+    "react": "16.3.1",
+    "react-mixin": "^4.0.0",
+    "react-native": "0.55.4",
+    "react-redux": "^5.0.7",
+    "react-timer-mixin": "^0.13.3",
+    "redux": "^4.0.0",
+    "redux-thunk": "^2.2.0"
+  },
+  "devDependencies": {
+    "babel-jest": "23.0.0",
+    "babel-preset-react-native": "4.0.0",
+    "jest": "23.0.0",
+    "react-test-renderer": "^16.4.0"
+  },
+  "jest": {
+    "preset": "react-native",
+    "transformIgnorePatterns": [
+      "/node_modules/(?!react-native|native-base)/"
+    ],
+    "testPathIgnorePatterns": [
+      "/node_modules/"
+    ]
+  }
+}

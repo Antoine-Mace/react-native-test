@@ -1,0 +1,10 @@
+{
+  "name": "Qudini-test",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "version": "echo $npm_package_version",
+    "android-build-release": "./scripts/build-android.sh",
+    "ios-build-release": "./scripts/build-ios.sh"
+  }
+}
